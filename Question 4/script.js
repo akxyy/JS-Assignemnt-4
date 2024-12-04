@@ -9,10 +9,9 @@
 
 // Make a prepopulate button, which when clicked will populate the form with values in the local storage if it exists, otherwise the button will be disabled.
 
-// Note: The page shouldn't refresh on submitting the form in any of the questions and show error messages below the appropriate fields only.4
+// Note: The page shouldn't refresh on submitting the form in any of the questions and show error messages below the appropriate fields only.
 
 document.getElementById("traineeDetails").addEventListener("submit", function (event) {
-
     event.preventDefault();
 
     const name = document.getElementById("name").value;
@@ -22,50 +21,42 @@ document.getElementById("traineeDetails").addEventListener("submit", function (e
     const pin = document.getElementById("pin").value;
 
     let valid = true;
-    const Errordiv1 = document.getElementById("nameErrorBox");
-    const Errordiv2 = document.getElementById("placeErrorBox");
-    const Errordiv3 = document.getElementById("mobileErrorBox");
-    const Errordiv4 = document.getElementById("companyErrorBox");
-    const Errordiv5 = document.getElementById("pinErrorBox");
 
-    if (name.length == 0) {
-        Errordiv1.textContent = "enter a valid name";
+    document.getElementById("nameErrorBox").textContent = "";
+    document.getElementById("placeErrorBox").textContent = "";
+    document.getElementById("mobileErrorBox").textContent = "";
+    document.getElementById("companyErrorBox").textContent = "";
+    document.getElementById("pinErrorBox").textContent = "";
+
+    if (name.length === 0) {
+        document.getElementById("nameErrorBox").textContent = "Enter a valid name";
         valid = false;
-    } else {
-        valid = true;
     }
 
-    if (place.length == 0) {
-        Errordiv2.textContent = "Enter a valid Place name";
+    if (place.length === 0) {
+        document.getElementById("placeErrorBox").textContent = "Enter a valid place name";
         valid = false;
-    } else {
-        valid = true;
     }
 
     if (mobile.length !== 10) {
-        Errordiv3.textContent = "Enter a valid mob no";
+        document.getElementById("mobileErrorBox").textContent = "Enter a valid mobile number";
         valid = false;
     } else if (!/^\d+$/.test(mobile)) {
-        Errordiv3.textContent = "Only numbers are allowed";
-    } else {
-        valid = true;
-    }
-
-    if (company.length == 0) {
-        Errordiv4.textContent = "Enter a valid company name";
+        document.getElementById("mobileErrorBox").textContent = "Only numbers are allowed in mobile number";
         valid = false;
-    } else {
-        valid = true;
     }
 
-    if (pin.length == 0) {
-        Errordiv5.textContent = "Enter a valid PIN code";
+    if (company.length === 0) {
+        document.getElementById("companyErrorBox").textContent = "Enter a valid company name";
+        valid = false;
+    }
+
+    if (pin.length === 0) {
+        document.getElementById("pinErrorBox").textContent = "Enter a valid PIN code";
         valid = false;
     } else if (!/^\d+$/.test(pin)) {
-        Errordiv5.textContent = "Only numbers are allowed";
-    }
-    else {
-        valid = true;
+        document.getElementById("pinErrorBox").textContent = "Only numbers are allowed in PIN code";
+        valid = false;
     }
 
     function clearForm() {
@@ -77,22 +68,20 @@ document.getElementById("traineeDetails").addEventListener("submit", function (e
         localStorage.setItem("traineeDetails", JSON.stringify(traineeDetails));
         clearForm();
         alert("Form Submitted");
-        
         document.getElementById("prepopulateButton").disabled = false;
     }
 
-    function regenerate() {
-        const traineedata = localStorage.getItem("traineeDetails");
-        if (traineedata) {
-            const data = JSON.parse("traineedata");
-
-            document.getElementById("name").value = data.name;
-            document.getElementById("place").value = data.place;
-            document.getElementById("mobile").value = data.mobile;
-            document.getElementById("company").value = data.company;
-            document.getElementById("id").value = data.id;
-
-            document.getElementById("prepopulateButton").disabled = true;
-        }
-    }
 });
+
+function regenerate() {
+    const traineeData = localStorage.getItem("traineeDetails");
+    if (traineeData) {
+        const data = JSON.parse(traineeData);
+        document.getElementById("name").value = data.name;
+        document.getElementById("place").value = data.place;
+        document.getElementById("mobile").value = data.mobile;
+        document.getElementById("company").value = data.company;
+        document.getElementById("pin").value = data.pin;
+        document.getElementById("prepopulateButton").disabled = true;
+    }
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 4</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <form id="traineeDetails"> 
+        <label for="name">Name:</label>
+        <input type="text" id="name"><br>
+        <div id="nameErrorBox"></div>
+
+        <label for="place">Place:</label>
+        <input type="text" id="place"><br>
+        <div id="placeErrorBox"></div>
+
+        <label for="mobile">Phone no:</label>
+        <input type="text" id="mobile"><br>
+        <div id="mobileErrorBox"></div>
+
+        <label for="company">Company Name:</label>
+        <input type="text" id="company"><br>
+        <div id="companyErrorBox"></div>
+
+        <label for="pin">Pin code:</label>
+        <input type="text" id="pin"><br>
+        <div id="pinErrorBox"></div>
+
+        <button type="submit">Submit</button>
+    </form>
+    <div id="errorBox"></div>
+    <button id="prepopulateButton" onclick="regenerate()">Regenerate data</button>
+</body>
+<script src="script.js"></script>
+</html>

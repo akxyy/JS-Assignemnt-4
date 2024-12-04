@@ -1,0 +1,16 @@
+#buttons{
+    margin: 20px;
+    height: auto;
+    width: 600px;
+}
+#buttons button{
+    margin: 5px;
+    background-color:yellow;
+    border: none;
+}
+#output{
+    margin: 20px;
+}
+h1{
+    margin: 20px;
+}

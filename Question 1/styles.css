@@ -1,0 +1,23 @@
+#redBlock {
+    background-color: red;
+    width: 500px;
+    height: 500px;
+    margin: 20px;
+}
+
+#buttons {
+    margin: 20px;
+}
+
+#buttons button {
+    background-color: azure;
+}
+
+h1 {
+    text-align: center;
+}
+
+#basicDetails p {
+    color: white;
+    text-align: center;
+}

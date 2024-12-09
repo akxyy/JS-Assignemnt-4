@@ -14,11 +14,11 @@
 document.getElementById("traineeDetails").addEventListener("submit", function (event) {
     event.preventDefault();
 
-    const name = document.getElementById("name").value;
-    const place = document.getElementById("place").value;
-    const mobile = document.getElementById("mobile").value;
-    const company = document.getElementById("company").value;
-    const pin = document.getElementById("pin").value;
+    const name = document.getElementById("name").value.trim();
+    const place = document.getElementById("place").value.trim();
+    const mobile = document.getElementById("mobile").value.trim();
+    const company = document.getElementById("company").value.trim();
+    const pin = document.getElementById("pin").value.trim();
 
     let valid = true;
 
@@ -27,6 +27,12 @@ document.getElementById("traineeDetails").addEventListener("submit", function (e
     document.getElementById("mobileErrorBox").textContent = "";
     document.getElementById("companyErrorBox").textContent = "";
     document.getElementById("pinErrorBox").textContent = "";
+
+    document.getElementById("nameErrorBox").style.color = "red";
+    document.getElementById("placeErrorBox").style.color = "red";
+    document.getElementById("mobileErrorBox").style.color = "red";
+    document.getElementById("companyErrorBox").style.color = "red";
+    document.getElementById("pinErrorBox").style.color = "red";
 
     if (name.length === 0) {
         document.getElementById("nameErrorBox").textContent = "Enter a valid name";
@@ -63,14 +69,22 @@ document.getElementById("traineeDetails").addEventListener("submit", function (e
         document.getElementById("traineeDetails").reset();
     }
 
+    if(localStorage.length==0){
+        document.getElementById("prepopulateButton").disabled = true;
+    }
+
     if (valid) {
         const traineeDetails = { name, place, mobile, company, pin };
         localStorage.setItem("traineeDetails", JSON.stringify(traineeDetails));
         clearForm();
         alert("Form Submitted");
         document.getElementById("prepopulateButton").disabled = false;
+        document.getElementById("nameErrorBox").textContent = "";
+        document.getElementById("placeErrorBox").textContent = "";
+        document.getElementById("mobileErrorBox").textContent = "";
+        document.getElementById("companyErrorBox").textContent = "";
+        document.getElementById("pinErrorBox").textContent = "";
     }
-
 });
 
 function regenerate() {

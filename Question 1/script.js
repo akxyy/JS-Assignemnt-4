@@ -5,7 +5,8 @@
 
 function toggleDiv() {
     const div = document.getElementById("redBlock");
-    if (div.style.display === "block") {
+    const style=window.getComputedStyle(div);
+    if (style.display === "block") {
         div.style.display = "none";
     }
     else {
@@ -15,7 +16,8 @@ function toggleDiv() {
 
 function changeBackgroundColor() {
     const div = document.getElementById("redBlock");
-    if (div.style.backgroundColor == "red") {
+    const style=window.getComputedStyle(div);
+    if (style.backgroundColor == "rgb(255, 0, 0)"){
         div.style.backgroundColor = "green";
     }
     else {
@@ -25,7 +27,8 @@ function changeBackgroundColor() {
 
 function showDetails() {
     const div = document.getElementById("basicDetails");
-    if (div.style.display == "block") {
+    const style=window.getComputedStyle(div);
+    if (style.display === "block") {
         div.style.display = "none";
     }
     else {
